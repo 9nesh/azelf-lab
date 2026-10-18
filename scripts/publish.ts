@@ -1,0 +1,2 @@
+import { Store } from '../services/control/src/store.ts';import { Publisher } from '../services/publisher/src/publisher.ts';import { z } from 'zod';
+const id=z.string().uuid().parse(process.argv.find(x=>x.startsWith('--run='))?.slice(6));const store=new Store(process.env.AZELF_DATA_DIRECTORY||'.azelf');try{const proposal=await new Publisher(store).publish(id);console.log(JSON.stringify(proposal));console.log('Attach the created PR to this runtime chat. No merge or deployment was performed.');}finally{store.db.close();}

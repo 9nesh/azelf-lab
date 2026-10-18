@@ -4,9 +4,9 @@ import { z } from 'zod';
 import { Controller } from './controller.ts';
 import { scenarios } from '../../../evaluation/scenarios/catalog.ts';
 import { policyHash } from '../../../packages/contracts/policy.ts';
-export function controlServer(controller:Controller){
+export function controlServer(controller:Controller,options:{origins?:Set<string>}={}){
  const token=randomBytes(32).toString('hex');const session=randomBytes(32).toString('hex');
- const allowed=new Set(['http://127.0.0.1:5173','http://localhost:5173','http://127.0.0.1:4100']);
+ const allowed=options.origins||new Set(['http://127.0.0.1:5173','http://localhost:5173','http://127.0.0.1:4100']);
  const equals=(a:string,b:string)=>a.length===b.length&&timingSafeEqual(Buffer.from(a),Buffer.from(b));
  return createServer(async(req,res)=>{
   res.setHeader('cache-control','no-store');res.setHeader('content-type','application/json');res.setHeader('x-content-type-options','nosniff');
@@ -37,7 +37,7 @@ export function controlServer(controller:Controller){
    if(url.pathname==='/api/lab/runs'){const input=z.object({scenario:z.string()}).strict().parse(body);result=controller.create(input.scenario);}
    else if(segments[1]==='lab'&&segments[2]==='runs'&&segments[3]){
     const id=z.string().uuid().parse(segments[3]);z.object({}).strict().parse(body);
-    switch(action){case 'introduce-change':result=await controller.introduce(id);break;case 'checks':result=controller.enqueueChecks(id);break;case 'repair':result=controller.repair(id);break;case 'cancel':result=await controller.cancel(id);break;case 'reset':result=await controller.reset(id);break;case 'replay':result=controller.replay(id);break;default:return send(404,{error:'Action not implemented'});}
+    switch(action){case 'introduce-change':result=await controller.introduce(id);break;case 'checks':result=controller.enqueueChecks(id);break;case 'repair':result=controller.repair(id);break;case 'evaluate':result=controller.evaluate(id);break;case 'cancel':result=await controller.cancel(id);break;case 'reset':result=await controller.reset(id);break;case 'replay':result=controller.replay(id);break;default:return send(404,{error:'Action not implemented'});}
    }else return send(404,{error:'Endpoint unavailable'});
    controller.store.cache(key,scope,action,result);send(202,result);
   }catch(e){send(409,{error:e instanceof Error?e.message:'Request failed'});}

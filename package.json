@@ -17,7 +17,10 @@
     "lab:stop": "tsx scripts/stop.ts",
     "lab:test:policy": "vitest run evaluation/contracts/policy.test.ts",
     "lab:test:scenarios": "tsx scripts/scenarios.ts",
-    "lab:test:isolation": "tsx scripts/isolation.ts"
+    "lab:test:isolation": "tsx scripts/isolation.ts",
+    "lab:publish": "tsx scripts/publish.ts",
+    "lab:prepare-hosting": "tsx scripts/prepare-vercel.ts",
+    "lab:test:negative": "tsx scripts/negative-suite.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "5.0.4",
