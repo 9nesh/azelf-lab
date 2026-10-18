@@ -1,0 +1,63 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Permit vendor API",
+    "version": "v7-ambiguous",
+    "description": "Read-only synthetic permits. Status approved means approved; pending means pending. fee_usd is dollars, at most two decimal places. "
+  },
+  "paths": {
+    "/permits": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Permit list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "permits"
+                  ],
+                  "properties": {
+                    "permits": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "project_name",
+                          "status",
+                          "fee_usd"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "project_name": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "approved",
+                              "pending"
+                            ]
+                          },
+                          "fee_usd": {
+                            "type": "number",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
