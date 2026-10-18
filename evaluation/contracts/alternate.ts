@@ -1,0 +1,2 @@
+// Protected expected records for an independent HTTP fixture.
+export const alternateTruth=[{id:'z_81',projectName:'Canal Renewal',status:'pending',feeCents:123},{id:'z_12',projectName:'Harbor Upgrade',status:'approved',feeCents:4567},{id:'z_45',projectName:'Transit Pavilion',status:'pending',feeCents:0},{id:'z_20',projectName:'Meadow Works',status:'approved',feeCents:32109},{id:'z_03',projectName:'Library Annex',status:'approved',feeCents:201}];
