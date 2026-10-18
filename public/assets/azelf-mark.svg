@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="350" viewBox="0 0 400 350" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Azelf</title>
+  <desc id="desc">An upward black mark with a curved open base and a vivid red center.</desc>
+  <path d="M200 9C224 9 240 33 259 66L384 284C400 312 405 337 389 343C373 350 345 327 313 309C275 288 240 276 200 276C160 276 125 288 87 309C55 327 27 350 11 343C-5 337 0 312 16 284L141 66C160 33 176 9 200 9Z" fill="#080808"/>
+  <ellipse cx="200" cy="180" rx="23" ry="53" fill="#FF353C"/>
+</svg>

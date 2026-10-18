@@ -1,0 +1,79 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Permit vendor API",
+    "version": "v3-pagination",
+    "description": "Read-only synthetic permits. Status approved means approved; pending means pending. fee_usd is dollars, at most two decimal places. "
+  },
+  "paths": {
+    "/permits": {
+      "get": {
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Permit list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "permits",
+                    "next_cursor"
+                  ],
+                  "properties": {
+                    "permits": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "project_name",
+                          "status",
+                          "fee_usd"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "project_name": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "approved",
+                              "pending"
+                            ]
+                          },
+                          "fee_usd": {
+                            "type": "number",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "next_cursor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Opaque cursor. Request cursor unchanged until null; fetch every page. Retry network/503 at most once; never return partial data. Detect cycles and conflicting duplicates. Exact duplicates may coalesce."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

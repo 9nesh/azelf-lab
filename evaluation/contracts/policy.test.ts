@@ -1,0 +1,10 @@
+import { it,expect } from 'vitest';
+import { mkdtempSync,rmSync,writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { Store } from '../../services/control/src/store.ts';
+import { diagnose } from '../../services/control/src/observations.ts';
+it('artifacts verify hashes and reject traversal',()=>{const dir=mkdtempSync(join(tmpdir(),'azelf-store-'));const store=new Store(dir);try{const artifact=store.artifact({safe:'evidence'},{test:true});expect(store.readArtifact(artifact.id).value).toEqual({safe:'evidence'});expect(()=>store.readArtifact('../outside')).toThrow();writeFileSync(join(store.artifacts,artifact.id),'tampered');expect(()=>store.readArtifact(artifact.id)).toThrow('integrity');}finally{store.db.close();rmSync(dir,{recursive:true});}});
+it('one active scope and cancellation fence stale workers',()=>{const dir=mkdtempSync(join(tmpdir(),'azelf-store-'));const store=new Store(dir);try{const a=store.lease('a','repair');expect(()=>store.lease('b','repair')).toThrow();store.cancel('a');expect(store.valid(a.id,a.fence)).toBe(false);expect(()=>store.finish(a.id,a.fence,'passed','forged')).toThrow('fenced');expect(store.lease('b','repair').fence).toBe(1);}finally{store.db.close();rmSync(dir,{recursive:true});}});
+it.each(['availability','authentication','quota','semantic'])('restrains %s failures',code=>{const result=diagnose([{id:'fetch',status:'fail',observed:{code}}],true);expect(result.eligible).toBe(false);});
+it('does not repair additive healthy changes or undocumented failures',()=>{expect(diagnose([{id:'records',status:'pass'}],true).eligible).toBe(false);expect(diagnose([{id:'records',status:'fail'}],false).classification).toBe('insufficient_evidence');});
