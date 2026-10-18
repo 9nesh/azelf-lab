@@ -1,0 +1,17 @@
+{
+  "approvalStatus": "NOT_APPROVED",
+  "model": "gpt-6.1-sol",
+  "authentication": "Existing supported Codex ChatGPT sign-in, retained only in trusted host app-server; no key provisioning",
+  "transport": "Codex app-server stdio, ephemeral task, no native environment tools, only a wrapper-owned dynamic container-exec tool",
+  "candidateBoundary": "Unprivileged constrained disposable container; only adapter writable; evidence read-only; internal network to immutable fixture; no host/home/credentials/evaluation mounts",
+  "enforcedWallSeconds": 600,
+  "enforcedAttemptsPerIncident": 1,
+  "enforcedDemonstrationInvocations": 2,
+  "enforcedToolCallsPerAttempt": 30,
+  "enforcedOutputBytesPerAttempt": 1048576,
+  "observedTokenStopThreshold": 60000,
+  "hardAggregateTokenCap": false,
+  "tokenAccounting": "Count reported input (including cached input once within total input) plus output; no automatic retries; stop at the first received usage report meeting threshold",
+  "residualExposure": "The in-flight server response can exceed 60,000 aggregate tokens before usage is reported or cancellation propagates. No maximum token overrun or dollar cap is guaranteed.",
+  "activationRequires": ["Explicit human approval replacing strict token ceiling for these two runs", "Container-only tool inventory proof", "Credential and egress canaries with exact runner", "Cancellation and timeout tests"]
+}

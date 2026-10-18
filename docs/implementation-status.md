@@ -4,7 +4,21 @@ Sprint start: 2026-10-18 18:07:55 America/New_York (22:07:55 UTC).
 Target finish: 2026-10-18 23:07:55 America/New_York (2026-10-19 03:07:55 UTC).
 The five hours are a delivery target, not an automatic timeout.
 
-Current milestone: 0 — prerequisites and reproducible baseline.
+Current milestone: live-runtime prerequisite investigation, with working HTTP baseline, durable Lab and independent deterministic verifier.
+Local loop: **INCOMPLETE** — zero real repair invocations. Proposal delivery: **INCOMPLETE** — private source repository exists; no verified live repair PR. Hosted loop: **INCOMPLETE** — empty Vercel projects exist; no approved deployments or observation window.
+
+Current blockers:
+- Exact runtime model: gpt-6.1-sol (resolved from this build chat). User requires 60,000 aggregate tokens/attempt including cached input/retries, one attempt/incident, ten-minute deadline, two invocations total. Hard enforcement is unproven; do not invoke the model under post-hoc accounting.
+- Credential broker and repair-network isolation still unproven. Network-none verifier boundary passed ten canaries.
+- Merge/test deployment remain human-authorized actions against a future concrete verified candidate.
+
+Active services: Lab dev session 3311, loopback Vite :5173 and control :4100, ephemeral run vendor/consumer HTTP instances. Backend process predates latest edits and needs restart. Temporary container verification scopes clean up after runs.
+
+Exact next action: investigate installed CLI token_budget/rollout_budget feature and app-server schema, time-boxed to 15 minutes from 22:21:24 UTC (by 22:36:24 UTC). If strict enforcement cannot be proven, present a concrete existing-auth/model route and residual token exposure for human approval. Do not expand peripheral scope while this gate is unresolved.
+
+Latest evidence: protected unit/restraint 54/54 PASS; deterministic rename reference 29 checks PASS, combined 46 PASS; 13/13 wrong candidates rejected. All reference/fake results are labeled and do not satisfy live-repair requirements. Lab browser suite currently FAILS embedding its consumer at a dynamically assigned test origin (CSP origin mismatch); original standalone browser baseline passes. Fix this necessary verification issue alongside runtime investigation.
+
+Repository: https://github.com/9nesh/azelf-lab, PRIVATE, baseline b6da0cf pushed. Vercel projects prj_oUVr0qWza3XV34npvWpwAa84CJX2 / prj_58JTFc5bVdjfWtYscTvC8bvnn2wk, no deployments. Current working changes after b6da0cf remain uncommitted.
 
 ## Workspace inspection
 

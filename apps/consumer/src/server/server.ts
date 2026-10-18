@@ -2,10 +2,11 @@ import { createServer } from 'node:http';
 import { readFileSync } from 'node:fs';
 import { listPermits } from '../integrations/permits.ts';
 import { IntegrationError } from '../model/permit.ts';
-export function consumerServer(vendorUrl: string, identity: string, instanceId: string, assetPath?:string) {
+export function consumerServer(vendorUrl: string, identity: string, instanceId: string, assetPath?:string, previewOrigins:string[]=['http://127.0.0.1:5173','http://localhost:5173']) {
+ if(previewOrigins.some(origin=>!/^http:\/\/(127\.0\.0\.1|localhost):[0-9]+$/.test(origin)))throw Error('Invalid private preview origin');
  return createServer(async (req,res)=>{
   res.setHeader('cache-control','no-store');
-  res.setHeader('content-security-policy', "default-src 'self'; script-src 'self'; style-src 'self'; frame-ancestors http://127.0.0.1:5173 http://localhost:5173; object-src 'none'; base-uri 'none'");
+  res.setHeader('content-security-policy', `default-src 'self'; script-src 'self'; style-src 'self'; frame-ancestors ${previewOrigins.join(' ')}; object-src 'none'; base-uri 'none'`);
   const path=new URL(req.url || '/', 'http://consumer').pathname;
   const json=(status:number,body:unknown)=>{res.writeHead(status,{'content-type':'application/json'});res.end(JSON.stringify(body));};
   if(req.method!=='GET')return json(405,{error:'Read only'});
