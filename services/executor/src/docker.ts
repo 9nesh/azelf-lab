@@ -8,8 +8,8 @@ export async function docker(args:string[],options:{input?:string;signal?:AbortS
 }
 export const resourceArgs=['--read-only','--user','1000:1000','--cpus','1','--memory','512m','--memory-swap','512m','--pids-limit','64','--cap-drop','ALL','--security-opt','no-new-privileges','--tmpfs','/tmp:rw,noexec,nosuid,size=64m,uid=1000,gid=1000','--ulimit','fsize=10240:10240','--log-driver','none'];
 export class ContainerScope {
- names:string[]=[];networks:string[]=[];
- async network(){const name=`azelf-${randomUUID()}`;await docker(['network','create','--internal',name]);this.networks.push(name);return name;}
- async start(args:string[]){const name=`azelf-${randomUUID()}`;this.names.push(name);await docker(['run','-d','--name',name,...resourceArgs,...args]);return name;}
- async cleanup(){for(const name of this.names.reverse())await docker(['rm','-f',name]).catch(()=>{});for(const name of this.networks.reverse())await docker(['network','rm',name]).catch(()=>{});}
+ names:string[]=[];networks:string[]=[];closed=false;cleanupPromise:Promise<void>|null=null;
+ async network(){if(this.closed)throw Error('Scope closed');const name=`azelf-${randomUUID()}`;await docker(['network','create','--internal',name]);if(this.closed){await docker(['network','rm',name]);throw Error('Scope closed during network creation');}this.networks.push(name);return name;}
+ async start(args:string[]){if(this.closed)throw Error('Scope closed');const name=`azelf-${randomUUID()}`;this.names.push(name);await docker(['run','-d','--name',name,...resourceArgs,...args]);if(this.closed){await docker(['rm','-f',name]).catch(()=>{});throw Error('Scope closed during container creation');}return name;}
+ async cleanup(){if(this.cleanupPromise)return this.cleanupPromise;this.closed=true;this.cleanupPromise=(async()=>{for(const name of this.names.splice(0).reverse())await docker(['rm','-f',name]).catch(()=>{});for(const name of this.networks.splice(0).reverse())await docker(['network','rm',name]).catch(()=>{});})();return this.cleanupPromise;}
 }
