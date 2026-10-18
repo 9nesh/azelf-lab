@@ -4,21 +4,21 @@ Sprint start: 2026-10-18 18:07:55 America/New_York (22:07:55 UTC).
 Target finish: 2026-10-18 23:07:55 America/New_York (2026-10-19 03:07:55 UTC).
 The five hours are a delivery target, not an automatic timeout.
 
-Current milestone: live-runtime prerequisite investigation, with working HTTP baseline, durable Lab and independent deterministic verifier.
+Current milestone: directly approved bounded live-runtime route; preparing first real rename dispatch, with working HTTP baseline, durable Lab and independent deterministic verifier.
 Local loop: **INCOMPLETE** — zero real repair invocations. Proposal delivery: **INCOMPLETE** — private source repository exists; no verified live repair PR. Hosted loop: **INCOMPLETE** — empty Vercel projects exist; no approved deployments or observation window.
 
 Current blockers:
-- Exact runtime model: gpt-6.1-sol (resolved from this build chat). User requires 60,000 aggregate tokens/attempt including cached input/retries, one attempt/incident, ten-minute deadline, two invocations total. Hard enforcement is unproven; do not invoke the model under post-hoc accounting.
-- Credential broker and repair-network isolation still unproven. Network-none verifier boundary passed ten canaries.
+- Exact runtime model: gpt-6.1-sol (resolved from this build chat). Direct human "yes approve" verified in accountability chat permits the replacement: stop at 60,000 reported total tokens including cached input, with possible in-flight overrun; no exact overrun/dollar cap. One attempt/incident, ten-minute wall deadline, at most two invocations, 30 container-tool calls, 1 MiB output, no automatic retry. Exact approval evidence is in runner/runtime-authorization.json.
+- Proposed broker uses task-local private host auth and no native execution environment. Credential-free mock preflight showed no loaded instructions, empty skill registry, denied host-file read and container tool routing. Exact repair container passed 12 canaries. Real model/auth compatibility remains unverified until authorized inference.
 - Merge/test deployment remain human-authorized actions against a future concrete verified candidate.
 
 Active services: Lab dev session 3311, loopback Vite :5173 and control :4100, ephemeral run vendor/consumer HTTP instances. Backend process predates latest edits and needs restart. Temporary container verification scopes clean up after runs.
 
-Exact next action: investigate installed CLI token_budget/rollout_budget feature and app-server schema, time-boxed to 15 minutes from 22:21:24 UTC (by 22:36:24 UTC). If strict enforcement cannot be proven, present a concrete existing-auth/model route and residual token exposure for human approval. Do not expand peripheral scope while this gate is unresolved.
+Exact next action: commit/push the reviewed baseline, deliberately restart the backend preserving SQLite state, then execute the real rename demonstration. Isolation: 12/12 repair canaries PASS, mock app-server registry/tool boundary PASS, cancellation and 30-second command-timeout PASS with zero remaining task containers. Do not run combined until rename outcome is reviewed. No real inference has yet occurred.
 
-Latest evidence: protected unit/restraint 54/54 PASS; deterministic rename reference 29 checks PASS, combined 46 PASS; 13/13 wrong candidates rejected. All reference/fake results are labeled and do not satisfy live-repair requirements. Lab browser suite currently FAILS embedding its consumer at a dynamically assigned test origin (CSP origin mismatch); original standalone browser baseline passes. Fix this necessary verification issue alongside runtime investigation.
+Latest evidence: protected unit/restraint 54/54 PASS; deterministic rename reference 29 checks PASS, combined 46 PASS; 13/13 wrong candidates rejected. All reference/fake results are labeled and do not satisfy live-repair requirements. Lab browser suite now PASS 2/2, covering embedded baseline, actual rename failure, incident deduplication, no-invocation blocked repair, unavailable candidate/released views, reload, replay and cancellation. Earlier embedding and test-wait failures are retained in historical output.
 
-Repository: https://github.com/9nesh/azelf-lab, PRIVATE, baseline b6da0cf pushed. Vercel projects prj_oUVr0qWza3XV34npvWpwAa84CJX2 / prj_58JTFc5bVdjfWtYscTvC8bvnn2wk, no deployments. Current working changes after b6da0cf remain uncommitted.
+Repository: https://github.com/9nesh/azelf-lab, PRIVATE, baseline b6da0cf pushed; current local commit 2454916 plus runtime-boundary work. Vercel projects prj_oUVr0qWza3XV34npvWpwAa84CJX2 / prj_58JTFc5bVdjfWtYscTvC8bvnn2wk, no deployments. Current working changes after b6da0cf remain uncommitted.
 
 ## Workspace inspection
 

@@ -1,0 +1,24 @@
+{
+  "approvalStatus": "APPROVED_BY_HUMAN",
+  "model": "gpt-6.1-sol",
+  "authentication": "Existing supported Codex ChatGPT sign-in, retained only in trusted host app-server; no key provisioning",
+  "transport": "Codex app-server stdio, ephemeral task, no native environment tools, only a wrapper-owned dynamic container-exec tool",
+  "candidateBoundary": "Unprivileged constrained disposable container; only adapter writable; evidence read-only; internal network to immutable fixture; no host/home/credentials/evaluation mounts",
+  "enforcedWallSeconds": 600,
+  "enforcedAttemptsPerIncident": 1,
+  "enforcedDemonstrationInvocations": 2,
+  "enforcedToolCallsPerAttempt": 30,
+  "enforcedOutputBytesPerAttempt": 1048576,
+  "observedTokenStopThreshold": 60000,
+  "hardAggregateTokenCap": false,
+  "tokenAccounting": "Count reported input (including cached input once within total input) plus output; no automatic retries; stop at the first received usage report meeting threshold",
+  "residualExposure": "The in-flight server response can exceed 60,000 aggregate tokens before usage is reported or cancellation propagates. No maximum token overrun or dollar cap is guaranteed.",
+  "activationRequires": [
+    "Explicit human approval replacing strict token ceiling for these two runs",
+    "Container-only tool inventory proof",
+    "Credential and egress canaries with exact runner",
+    "Cancellation and timeout tests"
+  ],
+  "authorizationEvidence": "Direct human reply \"yes approve\" in accountability chat 01a15105-c6c7-7721-b3ea-03b292a9cd61, turn 01a15124-07bf-7271-9ac9-e20af6c2c56a, user message 01a15124-2ca2-7a82-8b9b-40db5c87916f, following explicit question approving the bounded route and accepting possible token overrun. Verified using read_thread. Prior delegated selection was rejected and revoked; it is not the authorization.",
+  "authorizationSourceThread": "01a15105-c6c7-7721-b3ea-03b292a9cd61"
+}
