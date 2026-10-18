@@ -8,3 +8,5 @@ artifacts/*-raw.jpg
 .azelf/
 playwright-report/
 test-results/
+.impeccable/review/
+.vercel/

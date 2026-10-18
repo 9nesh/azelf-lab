@@ -1,0 +1,18 @@
+{
+  "version": "1",
+  "image": "node@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d",
+  "uid": "1000:1000",
+  "cpus": "1",
+  "memory": "512m",
+  "pids": 64,
+  "readOnlyRoot": true,
+  "capDrop": "ALL",
+  "noNewPrivileges": true,
+  "tmpfsBytes": 67108864,
+  "network": "none unless task-private internal network with broker and pinned fixture only",
+  "workspaceMaxBytes": 10485760,
+  "outputMaxBytes": 1048576,
+  "deadlineSeconds": 600,
+  "modelCredentialsInCandidate": false,
+  "publisherCredentialsInCandidate": false
+}

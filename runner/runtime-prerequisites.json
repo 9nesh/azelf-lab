@@ -1,0 +1,16 @@
+{
+  "resolvedModel": "gpt-6.1-sol",
+  "modelEvidence": "Build chat turn_context model and user configuration match",
+  "cliVersion": "0.153.0",
+  "authentication": "existing ChatGPT sign-in; never mount into candidate",
+  "maxTotalTokensPerAttempt": 60000,
+  "countCachedInputTokens": true,
+  "maxAttemptsPerIncident": 1,
+  "maxLiveRepairInvocations": 2,
+  "maxDemonstrationTokens": 120000,
+  "wallDeadlineSeconds": 600,
+  "hardTokenLimitEnforcement": "unsupported-unproven-for-current-CLI-transport",
+  "liveExecutionEnabled": false,
+  "reason": "Installed runtime exec help and current official configuration reference provide no aggregate input+output token budget option. Streaming usage and process cancellation do not establish a hard server generation bound. Credential broker not yet implemented. No live invocation may run until both are proven.",
+  "alternative": "A supported transport with pre-request token accounting and server-enforced output reservation, using exactly the approved model and existing auth where supported; API-key provisioning or credits require a separate user decision."
+}
