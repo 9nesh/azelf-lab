@@ -20,7 +20,13 @@
     "lab:test:isolation": "tsx scripts/isolation.ts",
     "lab:publish": "tsx scripts/publish.ts",
     "lab:prepare-hosting": "tsx scripts/prepare-vercel.ts",
-    "lab:test:negative": "tsx scripts/negative-suite.ts"
+    "lab:test:negative": "tsx scripts/negative-suite.ts",
+    "lab:test:repair-isolation": "tsx scripts/repair-isolation.ts",
+    "lab:test:runtime-cancellation": "tsx scripts/repair-cancellation.ts",
+    "lab:test:runtime-timeout": "tsx scripts/repair-timeout.ts",
+    "lab:test:mock-runtime": "tsx scripts/mock-appserver-boundary.ts",
+    "lab:test:mock-budget": "node scripts/mock-budget-transport.mjs",
+    "lab:demo": "tsx scripts/demo.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "5.0.4",

@@ -22,7 +22,7 @@ export function controlServer(controller:Controller,options:{origins?:Set<string
     if(url.pathname==='/api/lab/runs')return send(200,controller.store.all());
     if(url.pathname==='/api/projects')return send(200,[{id:'azelf',repository:'local',defaultBranch:'main',connection:'not-connected'}]);
     if(url.pathname==='/api/projects/azelf/capabilities')return send(200,[{id:'permits',intent:'List and filter all permits with correct fees',owner:'local-operator',contract:'1',environment:'synthetic'}]);
-    if(url.pathname==='/api/incidents')return send(200,controller.store.all().flatMap(r=>r.incident?[r.incident]:[]));
+    if(url.pathname==='/api/incidents')return send(200,controller.store.incidents());
     if(segments[1]==='artifacts')return send(200,controller.store.readArtifact(z.string().regex(/^[a-f0-9]{64}$/).parse(segments[2])));
     if(segments[1]==='lab'&&segments[2]==='runs'&&segments[3]){const id=z.string().uuid().parse(segments[3]);if(segments[4]==='events')return send(200,controller.store.events(id,z.coerce.number().int().min(0).parse(url.searchParams.get('after')||0)));return send(200,await controller.view(id));}
     return send(404,{error:'Endpoint unavailable'});
