@@ -11,11 +11,11 @@ export async function listPermits(baseUrl: string): Promise<Permit[]> {
   const seen = new Map<string, Permit>();
   for (const raw of body.permits) {
     if (!raw || typeof raw.id !== 'string' || !raw.id.trim() || typeof raw.project_name !== 'string' || !raw.project_name.trim()) throw new IntegrationError('schema', 'Invalid permit identity');
-    if (typeof raw.status !== 'string') throw new IntegrationError('schema', 'Missing status');
-    if (raw.status !== 'approved' && raw.status !== 'pending') throw new IntegrationError('semantic', `Undocumented permit status: ${String(raw.status).slice(0, 80)}`);
+    if (typeof raw.permit_status !== 'string') throw new IntegrationError('schema', 'Missing status');
+    if (raw.permit_status !== 'approved' && raw.permit_status !== 'pending') throw new IntegrationError('semantic', `Undocumented permit status: ${String(raw.permit_status).slice(0, 80)}`);
     const amount = raw.fee_usd;
     if (typeof amount !== 'number' || !Number.isFinite(amount) || amount < 0 || !Number.isSafeInteger(Math.round(amount * 100)) || Math.abs(amount * 100 - Math.round(amount * 100)) > 1e-7) throw new IntegrationError('schema', 'Invalid dollar amount');
-    const permit: Permit = { id: raw.id, projectName: raw.project_name, status: raw.status, feeCents: Math.round(amount * 100) };
+    const permit: Permit = { id: raw.id, projectName: raw.project_name, status: raw.permit_status, feeCents: Math.round(amount * 100) };
     if (seen.has(permit.id) && JSON.stringify(seen.get(permit.id)) !== JSON.stringify(permit)) throw new IntegrationError('schema', 'Conflicting duplicate permit');
     seen.set(permit.id, permit);
   }
