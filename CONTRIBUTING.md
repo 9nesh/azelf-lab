@@ -4,7 +4,7 @@ Azelf is a research prototype for evidence-led API maintenance. Useful contribut
 
 ## Before changing code
 
-Read [AGENTS.md](AGENTS.md), the [build guide](AZELF_FIRST_VERSION_BUILD_GUIDE.md), and the current entries in [implementation status](docs/implementation-status.md) and [architecture decisions](docs/architecture-decisions.md). Check the working tree and preserve unrelated work.
+Check the working tree and preserve unrelated work. Keep local planning notes and experiment journals out of commits.
 
 Keep UI changes in `src/`, brand vectors in `public/assets/`, and retain the Sites packaging files. Use the pinned Node version and `npm ci`.
 

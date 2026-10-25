@@ -66,7 +66,7 @@ Azelf is a **single-operator research prototype**, with a working local Lab and 
 | --- | --- |
 | Landing page | Responsive React page, local SVG branding, illustrative maintenance timeline, and explicitly labeled preview forms. |
 | Experiment Lab | Controlled vendor changes, baseline/broken/candidate views, persistent observations, diffs, and evidence inspection. |
-| Repair execution | Recorded native runtime repair demonstrations with adapter-only container execution and separate credential handling. |
+| Repair execution | Recorded native repair demonstrations with adapter-only container execution and separate credential handling. |
 | Verification | Trusted HTTP/browser checks, source-bound proofs, isolation canaries, and retained failure artifacts. |
 | Review and release | Guarded GitHub publication and synthetic Vercel Preview release tooling; human approval required for merge and deployment. |
 | Research extensions | Development-workspace experiments in bounded traversal, versioned requirements, replay, challenges, and recipe transfer; not shipped in this branch. |
@@ -117,11 +117,11 @@ This serves the frontend without starting the Lab control service. Early-access 
 <details>
 <summary><strong>Native execution and provider setup</strong></summary>
 
-Live repair additionally requires the supported runtime runtime, existing authentication, current isolation canaries, and a valid explicitly approved invocation allowance. GitHub publication and Vercel Preview releases require their respective authenticated tools and exact source/evidence approval gates.
+Live repair additionally requires the configured repair runtime, existing authentication, current isolation canaries, and a valid explicitly approved invocation allowance. GitHub publication and Vercel Preview releases require their respective authenticated tools and exact source/evidence approval gates.
 
 The historical five native invocation slots are consumed. Starting the Lab or copying [.env.example](.env.example) does not grant another invocation. The example file documents settings; it is not a credential bundle or a complete provider onboarding flow.
 
-Read the [build guide](AZELF_FIRST_VERSION_BUILD_GUIDE.md) and [runtime boundary notes](docs/runtime-blocker.md) before performing provider actions. Status records are chronological; later dated evidence takes precedence over earlier pending states.
+Review the trust boundaries above before performing provider actions.
 
 </details>
 
@@ -190,10 +190,6 @@ Fake/reference executors exercise orchestration; they do not count as native rep
 
 | Read this | For |
 | --- | --- |
-| [First version build guide](AZELF_FIRST_VERSION_BUILD_GUIDE.md) | Product scope, required behavior, and acceptance criteria. |
-| [Delivery checkpoints](AZELF_FIVE_HOUR_DELIVERY_GOALS.md) | Original milestone definitions. |
-| [Implementation status](docs/implementation-status.md) | Dated evidence, actual outcomes, open requirements, and historical progress. |
-| [Architecture decisions](docs/architecture-decisions.md) | Rationale for isolation, authority, persistence, and replay design. |
 
 ## Contributing
 
@@ -202,3 +198,5 @@ Start with the [contribution guide](CONTRIBUTING.md). Keep changes focused, pres
 ## License
 
 No license has been selected for this repository. Public availability alone does not grant an open-source license; reuse permissions must be established with the repository owner.
+
+Historical source commits were rewritten during repository cleanup. Old source and evidence hashes describe the original archived history and must not be treated as proof of this checkout. Existing local run archives are retained separately.

@@ -1,3 +1,4 @@
+import { legacyProviderId } from '../../executor/src/provider-identity.ts';
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync,writeFileSync,readFileSync,rmSync } from 'node:fs';
 import { join } from 'node:path';
@@ -25,7 +26,7 @@ export class Publisher {
  constructor(private store:Store){}
  async publish(runId:string){
   const run=this.store.get(runId),task=run.task as any;
-  if(!task||task.state!=='awaiting_approval'||run.executor!=='codex')throw Error('Publication requires a live runtime candidate in awaiting_approval');
+  if(!task||task.state!=='awaiting_approval'||run.executor!==legacyProviderId)throw Error('Publication requires a live runtime candidate in awaiting_approval');
   const verificationArtifact=this.store.readArtifact(task.verificationArtifactId);
   if(verificationArtifact.metadata.provenance.kind!=='trusted-verifier'||verificationArtifact.metadata.provenance.taskId!==task.id)throw Error('Untrusted verification provenance');
   const verification=verificationSchema.parse(verificationArtifact.value);

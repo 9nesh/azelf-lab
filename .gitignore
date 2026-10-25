@@ -10,3 +10,25 @@ playwright-report/
 test-results/
 .impeccable/review/
 .vercel/
+
+# Local planning, agent notes, and experiment journals
+AGENTS.md
+**/AGENTS.md
+**/*_BUILD_GUIDE.md
+**/*_DELIVERY_GOALS.md
+**/*_PLAN.md
+**/*_GOALS.md
+**/*_PROPOSAL.md
+**/*-plan.md
+**/*-handoff.md
+**/*-authorization.md
+**/*_EVIDENCE_*.md
+**/*_PROTOCOL_*.md
+**/implementation-status.md
+**/architecture-decisions.md
+**/design-qa.md
+output/
+tmp/
+
+/node_modules
+**/*-blocker.md
