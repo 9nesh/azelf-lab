@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-labelledby="title desc">
+<title id="title">Azelf — Detect. Repair. Verify.</title>
+<desc id="desc">Azelf's black arch and red oval on warm white. Evidence-led repair for changing APIs.</desc>
+<rect width="1280" height="440" fill="#f8f7f3"/>
+<g transform="translate(1010 70) scale(.48)"><path d="M200 9C224 9 240 33 259 66L384 284C400 312 405 337 389 343C373 350 345 327 313 309C275 288 240 276 200 276C160 276 125 288 87 309C55 327 27 350 11 343C-5 337 0 312 16 284L141 66C160 33 176 9 200 9Z" fill="#080808"/><ellipse cx="200" cy="180" rx="23" ry="53" fill="#ff353c"/></g>
+<g fill="#080808" font-family="Helvetica Neue,Helvetica,Arial,sans-serif"><text x="64" y="191" font-size="146" font-weight="700" letter-spacing="-9">Azelf</text><text x="69" y="263" font-size="35" letter-spacing="-1">Evidence-led repair for changing APIs.</text><text x="70" y="371" font-size="23">01 Detect</text><text x="310" y="371" font-size="23">02 Repair</text><text x="550" y="371" font-size="23">03 Verify</text><text x="1070" y="371" font-size="16">RESEARCH LAB</text></g>
+<path d="M70 316H1210" stroke="#080808" stroke-opacity=".18"/>
+</svg>
