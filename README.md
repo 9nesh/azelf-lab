@@ -15,7 +15,7 @@
   <a href="#how-it-works">How it works</a> ·
   <a href="#try-it-locally">Try it locally</a> ·
   <a href="#architecture">Architecture</a> ·
-  <a href="#documentation">Documentation</a>
+  <a href="#contributing">Contributing</a>
 </p>
 
 ## Why Azelf?
@@ -186,17 +186,6 @@ Fake/reference executors exercise orchestration; they do not count as native rep
 
 `npm run build` emits `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`. Preserve the Sites worker and build contract when changing packaging; see the [hosting handoff](docs/hosting-handoff.md).
 
-## Documentation
-
-| Read this | For |
-| --- | --- |
-
 ## Contributing
 
 Start with the [contribution guide](CONTRIBUTING.md). Keep changes focused, preserve immutable experiment evidence, and distinguish tests, model-authored repairs, and hosted results in every claim.
-
-## License
-
-No license has been selected for this repository. Public availability alone does not grant an open-source license; reuse permissions must be established with the repository owner.
-
-Historical source commits were rewritten during repository cleanup. Old source and evidence hashes describe the original archived history and must not be treated as proof of this checkout. Existing local run archives are retained separately.
